@@ -1,0 +1,1 @@
+UPDATE contact set first_name = 'William' where last_name = 'Norman';
