@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.springinpractice</groupId>
+    <groupId>org.bluevox.inc</groupId>
     <artifactId>com.springinpractice.top</artifactId>
     <version>1.0-RELEASE</version>
   </parent>
@@ -53,7 +53,6 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>9.4-1200-jdbc41</version>
 	  </dependency>
     
   </dependencies>
