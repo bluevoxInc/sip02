@@ -20,47 +20,42 @@
     <h1 class="vcard icon">Contact details</h1>
     
     <form:form action="${formAction}" method="${requestScope.method}" modelAttribute="contact" cssClass="main">
-      <form:errors>
-        <div class="warning">
-          <form:errors/>
-        </div>
-      </form:errors>
-      
+      <form:errors class="warning" element="div" />
+          
       <div class="panel grid">
         <div class="gridRow yui-gf">
           <div class="fieldLabel yui-u first">First name:</div>
           <div class="yui-u">
             <div><form:input path="firstName" cssClass="short" /></div>
-            <form:errors path="firstName">
-              <div class="errorMessage"><form:errors path="firstName" /></div>
-            </form:errors>
-          </div>
+            <div>
+            	</div><form:errors path="firstName" class="errorMessage" element="div" />
+            </div>
         </div>
         <div class="gridRow yui-gf">
           <div class="fieldLabel yui-u first">Middle initial:</div>
           <div class="yui-u">
             <div><form:input path="middleInitial" cssClass="short" /></div>
-            <form:errors path="middleInitial">
-              <div class="errorMessage"><form:errors path="middleInitial" /></div>
-            </form:errors>
+            <div>
+            	<form:errors path="middleInitial" class="errorMessage" element="div" />
+            </div>
           </div>
         </div>
         <div class="gridRow yui-gf">
           <div class="fieldLabel yui-u first">Last name:</div>
           <div class="yui-u">
             <div><form:input path="lastName" cssClass="short" /></div>
-            <form:errors path="lastName">
-              <div class="errorMessage"><form:errors path="lastName" /></div>
-            </form:errors>
+            <div>
+            	<form:errors path="lastName" class="errorMessage" element ="div" />
+            </div>
           </div>
         </div>
         <div class="gridRow yui-gf">
           <div class="fieldLabel yui-u first">E-mail:</div>
           <div class="yui-u">
             <div><form:input path="email" cssClass="medium" /></div>
-            <form:errors path="email">
-              <div class="errorMessage"><form:errors path="email" /></div>
-            </form:errors>
+            <div>
+            	<form:errors path="email" class="errorMessage" element="div" />
+            </div>
           </div>
         </div>
         <div class="gridRow yui-gf">

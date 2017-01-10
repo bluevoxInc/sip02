@@ -43,7 +43,7 @@
                 <td><c:if test="${not empty contact.email}"><span class="email icon"><a href="mailto:${contact.email}">${contact.email} </a></span></c:if></td>
                 <td>
                   <span class="vcardDelete icon"><a class="deleteContact" href="#">Delete</a></span>
-                  <form class="deleteForm" action="${contactUrl}" method="POST">
+                  <form class="deleteForm" action="${contactUrl}" method="post">
                     <input type="hidden" name="_method" value="DELETE" />
                   </form>
                 </td>
