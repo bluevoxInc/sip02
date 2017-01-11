@@ -9,11 +9,11 @@
     <version>1.0-RELEASE</version>
   </parent>
   
-  <artifactId>com.springinpractice.02_01</artifactId>
+  <artifactId>com.springinpractice.02_03</artifactId>
   <packaging>war</packaging>
 
-  <name>Spring in Practice Section 2.1</name>
-	<description>Shows how to use Spring's JdbcTemplate for data access.</description>
+  <name>Spring in Practice Section 2.3</name>
+	<description>Shows how to use object/relational mapping for database access.</description>
 	<url>http://springinpractice.com/</url>
 	
   <properties>
@@ -29,9 +29,17 @@
       <version>1.0-RELEASE</version>
     </dependency>
     <dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>com.springinpractice.deps-hibernate</artifactId>
+		<version>1.0-RELEASE</version>
+		<type>pom</type>
+		<optional>true</optional>
+	</dependency>
+    <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>com.springinpractice.deps-web</artifactId>
       <version>1.0-RELEASE</version>
+      <type>pom</type>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -53,7 +61,7 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
 	  </dependency>
-    
+
   </dependencies>
   
   <build>
@@ -61,6 +69,9 @@
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
+        <configuration>
+			<jettyEnvXml>${chapter.conf.dir}/jetty-env.xml</jettyEnvXml>
+		</configuration>
       </plugin>
      </plugins>
     </build>
