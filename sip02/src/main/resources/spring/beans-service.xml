@@ -22,24 +22,31 @@
 	
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/Sip02DS" resource-ref="true" />
 	
-	<util:properties id="hibernateProperties">
-		<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-		<prop key="hibernate.show_sql">false</prop>
-	</util:properties>
-	
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		p:dataSource-ref="dataSource"
-		p:packagesToScan="org.bluevox.inc.ch02.model"
-		p:hibernateProperties-ref="hibernateProperties" />
+		p:packagesToScan="org.bluevox.inc.ch02.model">
+		
+		<property name="persistenceProvider">
+			<bean class="org.hibernate.ejb.HibernatePersistence" />
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.PostgreSQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
 	
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
-		p:sessionFactory-ref="sessionFactory" />
+		class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory" />
 	
 	<tx:annotation-driven />
 	
-	<context:component-scan base-package="org.bluevox.inc.ch02.dao.hbn" />
+	<context:component-scan base-package="org.bluevox.inc.ch02.dao.jpa" />
 	<context:component-scan base-package="org.bluevox.inc.ch02.service.impl" />
 </beans>
 

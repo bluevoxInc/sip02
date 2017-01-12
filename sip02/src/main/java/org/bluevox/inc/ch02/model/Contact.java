@@ -36,7 +36,7 @@ public class Contact {
 	
 	@Id
 	@Column
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() { return id; }
 	
 	public void setId(Long id) {
