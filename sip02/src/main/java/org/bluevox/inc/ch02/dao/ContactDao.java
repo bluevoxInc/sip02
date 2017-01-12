@@ -3,14 +3,16 @@
  */
 package org.bluevox.inc.ch02.dao;
 
-import org.bluevox.inc.ch02.model.Contact;
-import org.bluevox.inc.dao.Dao;
 import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+
+import org.bluevox.inc.ch02.model.Contact;
 /**
  * @author wnorman
  *
  */
-public interface ContactDao extends Dao<Contact> {
-	List<Contact> findByEmail(String email);
+public interface ContactDao extends CrudRepository<Contact, Long> {
+	List<Contact> findByEmailLike(String email);
+
 }

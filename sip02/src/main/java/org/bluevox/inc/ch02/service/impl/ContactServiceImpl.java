@@ -3,10 +3,17 @@
  */
 package org.bluevox.inc.ch02.service.impl;
 
+import static org.springframework.util.Assert.notNull;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import org.bluevox.inc.ch02.dao.ContactDao;
 import org.bluevox.inc.ch02.model.Contact;
 import org.bluevox.inc.ch02.service.ContactService;
@@ -26,7 +33,8 @@ public class ContactServiceImpl implements ContactService {
 	 */
 	@Override
 	public void createContact(Contact contact) {
-		contactDao.create(contact);
+		notNull(contact, "contact can't be null");
+		contactDao.save(contact);
 	}
 
 	/* (non-Javadoc)
@@ -34,7 +42,13 @@ public class ContactServiceImpl implements ContactService {
 	 */
 	@Override
 	public List<Contact> getContacts() {
-		return contactDao.getAll();
+		Iterable<Contact> iterable = contactDao.findAll();
+		Iterator<Contact> iterator = iterable.iterator();
+		List<Contact> contacts = new ArrayList<Contact>();
+		while (iterator.hasNext()) {
+			contacts.add(iterator.next());
+		}
+		return contacts;
 	}
 
 	/* (non-Javadoc)
@@ -42,7 +56,8 @@ public class ContactServiceImpl implements ContactService {
 	 */
 	@Override
 	public List<Contact> getContactsByEmail(String email) {
-		return contactDao.findByEmail(email);
+		notNull(email, "email can't be null");
+		return contactDao.findByEmailLike("%" + email + "%");
 	}
 
 	/* (non-Javadoc)
@@ -50,7 +65,8 @@ public class ContactServiceImpl implements ContactService {
 	 */
 	@Override
 	public Contact getContact(Long id) {
-		return contactDao.get(id);
+		notNull(id, "id can't be null");
+		return contactDao.findOne(id);
 	}
 
 	/* (non-Javadoc)
@@ -58,7 +74,8 @@ public class ContactServiceImpl implements ContactService {
 	 */
 	@Override
 	public void updateContact(Contact contact) {
-		contactDao.update(contact);
+		notNull(contact, "contact can't be null");
+		contactDao.save(contact);
 	}
 
 	/* (non-Javadoc)
@@ -66,7 +83,8 @@ public class ContactServiceImpl implements ContactService {
 	 */
 	@Override
 	public void deleteContact(Long id) {
-		contactDao.deleteById(id);;
+		notNull(id, "id can't be null");
+		contactDao.delete(id);
 	}
 	
 }
