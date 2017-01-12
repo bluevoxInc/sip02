@@ -9,10 +9,10 @@
     <version>1.0-RELEASE</version>
   </parent>
   
-  <artifactId>com.springinpractice.02_03</artifactId>
+  <artifactId>com.springinpractice.02_04</artifactId>
   <packaging>war</packaging>
 
-  <name>Spring in Practice Section 2.3</name>
+  <name>Spring in Practice Section 2.4</name>
 	<description>Shows how to use object/relational mapping for database access.</description>
 	<url>http://springinpractice.com/</url>
 	
