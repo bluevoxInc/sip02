@@ -5,15 +5,15 @@
 
   <parent>
     <groupId>org.bluevox.inc</groupId>
-    <artifactId>org.bluevox.inc.top</artifactId>
+    <artifactId>com.springinpractice.top</artifactId>
     <version>1.0-RELEASE</version>
   </parent>
   
-  <artifactId>com.springinpractice.02_01</artifactId>
+  <artifactId>com.springinpractice.02_06</artifactId>
   <packaging>war</packaging>
 
-  <name>Spring in Practice Section 2.1</name>
-	<description>Shows how to use Spring's JdbcTemplate for data access.</description>
+  <name>Spring in Practice Section 2.6</name>
+	<description>Shows how to use Spring Data JPA for your data access layer.</description>
 	<url>http://springinpractice.com/</url>
 	
   <properties>
@@ -23,26 +23,48 @@
 
   <dependencies>
   
-  
-    <!-- <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>org.bluevox.inc.api</artifactId>
-      <version>1.0-RELEASE</version>
-    </dependency> -->
-   
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>org.bluevox.inc.deps-web</artifactId>
+      <artifactId>com.springinpractice.api</artifactId>
+      <version>1.0-RELEASE</version>
+    </dependency>
+   
+    <dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>com.springinpractice.deps-hibernate</artifactId>
+		<version>1.0-RELEASE</version>
+		<type>pom</type>
+		<optional>true</optional>
+	</dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>com.springinpractice.deps-web</artifactId>
       <version>1.0-RELEASE</version>
       <type>pom</type>
     </dependency>
  
-    <!-- <dependency>
+    <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>org.bluevox.inc.skin</artifactId>
+      <artifactId>com.springinpractice.skin</artifactId>
       <version>1.0-RELEASE</version>
       <type>war</type>
-    </dependency> -->
+    </dependency>
+    
+    <!-- Spring Data JPA -->
+    <dependency>
+    	<groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-commons-core</artifactId>
+    </dependency>
+    <dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-jpa</artifactId>
+	</dependency>
+    
+    <!-- Need this to use Hibernate as a JPA persistence provider -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+	</dependency>
     
     <!-- For JDBC -->
     <dependency>
@@ -56,16 +78,18 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>9.4-1200-jdbc41</version>
 	  </dependency>
-    
+
   </dependencies>
   
   <build>
      <plugins>
       <plugin>
-        <groupId>org.mortbay.jetty</groupId>
-        <artifactId>maven-jetty-plugin</artifactId>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <configuration>
+			<jettyEnvXml>${chapter.conf.dir}/jetty-env.xml</jettyEnvXml>
+		</configuration>
       </plugin>
      </plugins>
     </build>
